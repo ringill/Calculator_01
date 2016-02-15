@@ -1,0 +1,49 @@
+﻿@model Mvc4App.Models.CalculViewModel
+@{
+    ViewBag.Title = "Расчет";
+}
+
+<h4>Вычисление</h4>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div>
+        @Html.DropDownList("selectedOperator", new SelectList(Model.Operators))
+    </div>
+    
+    <fieldset>
+        <legend></legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Argument1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Argument1)
+            @Html.ValidationMessageFor(model => model.Argument1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Argument2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Argument2)
+            @Html.ValidationMessageFor(model => model.Argument2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Result)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Result)
+        </div>
+
+        <p>
+            <input type="submit" value="Вычислить" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

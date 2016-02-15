@@ -1,0 +1,10 @@
+﻿@using Logger.Entities
+@model IEnumerable<Record>
+
+@foreach (Record p in Model)
+{
+    <tr>
+        <td>@p.When</td>
+        <td>@p.What</td>
+    </tr>
+}
